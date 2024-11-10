@@ -52,7 +52,7 @@ const insertUser = async (req, res) => {
   }
 };
 
-const updateContact = async (req, res) => {
+const updateUser = async (req, res) => {
   const id = new ObjectId(req.params.id);
   const contact = {
     firstName: req.body.firstName,
@@ -64,7 +64,7 @@ const updateContact = async (req, res) => {
   const response = await mongo;
 };
 
-const deleteContact = async (req, res) => {
+const deleteUser = async (req, res) => {
   const id = new ObjectId(req.params.id);
   const response = await mongo;
 };
@@ -73,6 +73,6 @@ module.exports = {
   getAll,
   getOne,
   insertUser,
-  updateContact,
-  deleteContact,
+  updateUser,
+  deleteUser,
 };

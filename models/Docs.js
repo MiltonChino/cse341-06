@@ -10,7 +10,18 @@ const docSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    link: String,
+    updatedBy: {
+      type: String,
+      required: true,
+    },
+    source: {
+      type: String,
+      required: true,
+    },
+    approval: {
+      type: Number,
+      required: true,
+    },
   },
   { timestamps: true }
 );
