@@ -65,8 +65,6 @@ const updateUser = async (req, res) => {
     };
     console.log(newInfo);
     const result = await User.findById(req.params.id);
-    // console.log("user found");
-    // console.log(result.user.firstName);
     result.user.firstName = newInfo.user.firstName;
     result.user.lastName = newInfo.user.lastName;
     result.user.email = newInfo.user.email;
@@ -80,8 +78,16 @@ const updateUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-  const id = new ObjectId(req.params.id);
-  const response = await mongo;
+  try {
+    const result = await User.findById(req.params.id);
+    result.delete();
+    res.status(201).json(result);
+    return await res;
+  } catch (error) {
+    // console.log(error);
+    res.status(404);
+    return res.send("User not found");
+  }
 };
 
 module.exports = {

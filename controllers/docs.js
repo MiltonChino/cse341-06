@@ -56,7 +56,7 @@ const insertDoc = async (req, res) => {
 const updateDoc = async (req, res) => {
   const data = req.body;
   try {
-    const updatedDoc = {
+    const newInfo = {
       doc: {
         title: data.title,
         description: data.description,
@@ -66,11 +66,15 @@ const updateDoc = async (req, res) => {
         approval: data.approval,
       },
     };
-    console.log(updatedDoc);
-    const result = await Doc.findById(req.params._id);
-    console.log(result);
-    // .save();
-    res.status(201).json(`User ${updatedDoc._id} updated`);
+    console.log(newInfo);
+    const result = await Doc.findById(req.params.id);
+    result.doc.title = newInfo.doc.title;
+    result.doc.description = newInfo.doc.description;
+    result.doc.sentBy = newInfo.doc.sentBy;
+    result.doc.source = newInfo.doc.source;
+    result.doc.approval = newInfo.doc.approval;
+    await result.save();
+    res.status(201).json(`User ${result._id} updated`);
   } catch (error) {
     res.status(500);
     res.send(error || "Internal Server Error");
