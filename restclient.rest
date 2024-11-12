@@ -1,0 +1,77 @@
+//Development
+###
+GET http://localhost:3000/
+###
+GET http://localhost:3000/users/
+###
+GET http://localhost:3000/users/6717af075ae4e2146931b6a0
+###
+POST http://localhost:3000/users/ HTTP/1.1
+content-type: application/json
+
+{   "user":{
+    "firstName": "Helaman",
+    "lastName": "Chino",
+    "email": "helamchino@byui.com",
+    "level": "admin1"
+    }
+}  
+
+###
+GET http://localhost:3000/docs/
+###
+GET http://localhost:3000/docs/67333c678164f793a35981c0 
+###
+POST http://localhost:3000/docs/ HTTP/1.1
+content-type: application/json
+
+{   "doc":{
+    "title": "Title here",
+    "description": "Here is the description here",
+    "sentBy": "Helaman",
+    "updatedBy": "Any",
+    "source": "/src/img/doc1.pdf",
+    "approval": 0
+    }
+}  
+
+###
+PUT http://localhost:3000/users/6730126befaa53be1e1b4a34 HTTP/1.1
+content-type: application/json
+
+{   "user":{
+    "firstName": "Hesed",
+    "lastName": "Chino",
+    "email": "heschino@byui.com",
+    "level": "visitor"
+    }
+}
+### DELETE contact
+DELETE http://localhost:3000/contacts/67131873a0510839ba0387dd HTTP/1.1
+
+// Production
+
+###
+https://cse341-05.onrender.com/
+
+###
+https://cse341-05.onrender.com/users/
+
+###
+https://cse341-05.onrender.com/users/6717120629810ddfa37595f2
+
+###
+POST https://cse341-05.onrender.com/users/ HTTP/1.1
+content-type: application/json
+
+{   "user":{
+    "firstName": "Helaman",
+    "lastName": "Chino",
+    "email": "helamchino@byui.com",
+    "level": "admin1"
+    }
+}
+
+### DELETE contact
+DELETE https://cse341-04.onrender.com/contacts/6717120629810ddfa37595f2 HTTP/1.1
+

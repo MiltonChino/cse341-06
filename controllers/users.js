@@ -53,15 +53,30 @@ const insertUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  const id = new ObjectId(req.params.id);
-  const contact = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    favoriteColor: req.body.favoriteColor,
-    birthday: req.body.birthday,
-  };
-  const response = await mongo;
+  const data = req.body.user;
+  try {
+    const newInfo = {
+      user: {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        level: data.level,
+      },
+    };
+    console.log(newInfo);
+    const result = await User.findById(req.params.id);
+    // console.log("user found");
+    // console.log(result.user.firstName);
+    result.user.firstName = newInfo.user.firstName;
+    result.user.lastName = newInfo.user.lastName;
+    result.user.email = newInfo.user.email;
+    result.user.level = newInfo.user.level;
+    await result.save();
+    res.status(201).json(`User ${result._id} updated`);
+  } catch (error) {
+    res.status(500);
+    res.send(error || "Internal Server Error");
+  }
 };
 
 const deleteUser = async (req, res) => {

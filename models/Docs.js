@@ -2,25 +2,31 @@ const mongoose = require("mongoose");
 
 const docSchema = mongoose.Schema(
   {
-    title: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    updatedBy: {
-      type: String,
-      required: true,
-    },
-    source: {
-      type: String,
-      required: true,
-    },
-    approval: {
-      type: Number,
-      required: true,
+    doc: {
+      title: {
+        type: String,
+        required: true,
+      },
+      description: {
+        type: String,
+        required: true,
+      },
+      sentBy: {
+        type: String,
+        required: true,
+      },
+      updatedBy: {
+        type: String,
+        required: true,
+      },
+      source: {
+        type: String,
+        required: true,
+      },
+      approval: {
+        type: Number,
+        required: true,
+      },
     },
   },
   { timestamps: true }

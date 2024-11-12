@@ -25,20 +25,23 @@ const getOne = async (req, res) => {
 };
 
 const insertDoc = async (req, res) => {
-  const data = req.body;
+  const data = req.body.doc;
   try {
     const newDoc = new Doc({
-      title: data.title,
-      description: data.description,
-      updatedBy: data.updatedBy,
-      source: data.source,
-      approval: data.approval,
+      doc: {
+        title: data.title,
+        description: data.description,
+        sentBy: data.sentBy,
+        updatedBy: data.updatedBy,
+        source: data.source,
+        approval: data.approval,
+      },
     });
     console.log(newDoc);
 
     await newDoc.save();
     if (newDoc._id) {
-      res.status(201).json(`User ${newDc._id} created`);
+      res.status(201).json(`User ${newDoc._id} created`);
     } else {
       res
         .status(500)
@@ -51,15 +54,27 @@ const insertDoc = async (req, res) => {
 };
 
 const updateDoc = async (req, res) => {
-  const id = new ObjectId(req.params.id);
-  const contact = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    favoriteColor: req.body.favoriteColor,
-    birthday: req.body.birthday,
-  };
-  const response = await mongo;
+  const data = req.body;
+  try {
+    const updatedDoc = {
+      doc: {
+        title: data.title,
+        description: data.description,
+        sentBy: data.sentBy,
+        updatedBy: data.updatedBy,
+        source: data.source,
+        approval: data.approval,
+      },
+    };
+    console.log(updatedDoc);
+    const result = await Doc.findById(req.params._id);
+    console.log(result);
+    // .save();
+    res.status(201).json(`User ${updatedDoc._id} updated`);
+  } catch (error) {
+    res.status(500);
+    res.send(error || "Internal Server Error");
+  }
 };
 
 const deleteDoc = async (req, res) => {
