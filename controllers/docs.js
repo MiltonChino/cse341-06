@@ -54,7 +54,7 @@ const insertDoc = async (req, res) => {
 };
 
 const updateDoc = async (req, res) => {
-  const data = req.body;
+  const data = req.body.doc;
   try {
     const newInfo = {
       doc: {
