@@ -44,11 +44,14 @@ const insertUser = async (req, res) => {
     } else {
       res
         .status(500)
-        .json(newUser.error || "An error occurred while creating the contact.");
+        .json(
+          newUser.error.message ||
+            "An error occurred while creating the contact."
+        );
     }
   } catch (error) {
     res.status(500);
-    res.send(error || "Internal Server Error");
+    res.send(error.message || "Internal Server Error");
   }
 };
 
@@ -73,19 +76,19 @@ const updateUser = async (req, res) => {
     res.status(201).json(`User ${result._id} updated`);
   } catch (error) {
     res.status(500);
-    res.send(error || "Internal Server Error");
+    res.send(error.message || "Internal Server Error");
   }
 };
 
 const deleteUser = async (req, res) => {
   try {
-    // const result = await User.findById();
-    await User.deleteOne({ _id: req.params.id });
-    console.log(User);
+    const result = await User.findById({ _id: req.params.id });
+    // await User.deleteOne();
+    console.log(result);
     res.status(201).json("User deleted");
     // return await res;
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     res.status(404);
     return res.send("User not found");
   }

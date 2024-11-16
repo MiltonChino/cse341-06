@@ -77,13 +77,22 @@ const updateDoc = async (req, res) => {
     res.status(201).json(`User ${result._id} updated`);
   } catch (error) {
     res.status(500);
-    res.send(error || "Internal Server Error");
+    res.send(error.message || "Internal Server Error");
   }
 };
 
 const deleteDoc = async (req, res) => {
-  const id = new ObjectId(req.params.id);
-  const response = await mongo;
+  try {
+    const result = await Doc.findById({ _id: req.params.id });
+    // await User.deleteOne();
+    console.log(result);
+    res.status(201).json("User deleted");
+    // return await res;
+  } catch (error) {
+    // console.log(error);
+    res.status(404);
+    return res.send("User not found");
+  }
 };
 
 module.exports = {

@@ -4,7 +4,7 @@ GET http://localhost:3000/
 ###
 GET http://localhost:3000/users/
 ###
-GET http://localhost:3000/users/6717af075ae4e2146931b6a0
+GET http://localhost:3000/users/67342bfd1df36434ff5a5105
 ###
 POST http://localhost:3000/users/ HTTP/1.1
 content-type: application/json
@@ -13,14 +13,14 @@ content-type: application/json
     "firstName": "Luz",
     "lastName": "Chino",
     "email": "luzchino@byui.com",
-    "level": "admin1"
+    "level": "admin2"
     }
 }  
 
 ###
 GET http://localhost:3000/docs/
 ###
-GET http://localhost:3000/docs/67341815b2fcdd6c812ae790 
+GET http://localhost:3000/docs/673893498e30e910030e4444 
 ###
 POST http://localhost:3000/docs/ HTTP/1.1
 content-type: application/json
@@ -30,37 +30,41 @@ content-type: application/json
     "description": "Here is the description 2",
     "sentBy": "Milton",
     "updatedBy": "Helaman",
-    "source": "/src/img/doc2.pdf",
+    "source": "/src/img/doc3.pdf",
     "approval": 0
     }
 }  
-
 ###
-PUT http://localhost:3000/users/673347b32d506c2aa27812cc HTTP/1.1
+GET http://localhost:3000/users/67342bfd1df36434ff5a5105
+###
+PUT http://localhost:3000/users/67342bfd1df36434ff5a5105 HTTP/1.1
 content-type: application/json
 
 {   "user":{
-    "firstName": "Luz",
+    "firstName": "Milton",
     "lastName": "Chino",
-    "email": "luz@byui.com",
-    "level": "admin1"
+    "email": "mch@byui.com",
+    "level": "rt"
     }
 }
 ### DELETE user
-DELETE http://localhost:3000/users/672adb08d494fe719d0a7bfb HTTP/1.1
+DELETE http://localhost:3000/users/67342bfd1df36434ff5a5105 HTTP/1.1
 ###
-PUT http://localhost:3000/docs/67341815b2fcdd6c812ae790 HTTP/1.1
+PUT http://localhost:3000/docs/673893498e30e910030e4444 HTTP/1.1
 content-type: application/json
 
 {   "doc":{
-    "title": "Title updated",
-    "description": "Here is the description updated",
-    "sentBy": "Milton",
-    "updatedBy": "Luz",
-    "source": "/src/img/doc2.pdf",
-    "approval": 0
+    "title": "Title update",
+    "description": "Here is the description update",
+    "sentBy": "Luz",
+    "updatedBy": "Helaman",
+    "source": "/src/img/doc4.pdf",
+    "approval": "rp"
     }
-}
+
+}  
+###
+GET http://localhost:3000/docs/673893498e30e910030e4444
 ### DELETE doc
 DELETE http://localhost:3000/docs/67131873 HTTP/1.1
 
