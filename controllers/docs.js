@@ -83,15 +83,21 @@ const updateDoc = async (req, res) => {
 
 const deleteDoc = async (req, res) => {
   try {
-    const result = await Doc.findById({ _id: req.params.id });
-    // await User.deleteOne();
+    const result = await Doc.deleteOne({ _id: req.params.id });
     console.log(result);
-    res.status(201).json("User deleted");
-    // return await res;
+    if (result.deletedCount > 0) {
+      res.status(204).json(result);
+    } else {
+      res
+        .status(500)
+        .json(
+          response.error || "An error occurred while deleting the contact."
+        );
+    }
   } catch (error) {
     // console.log(error);
     res.status(404);
-    return res.send("User not found");
+    return res.send("Doc not found");
   }
 };
 

@@ -13,7 +13,7 @@ content-type: application/json
     "firstName": "Luz",
     "lastName": "Chino",
     "email": "luzchino@byui.com",
-    "level": "admin2"
+    "level": 1
     }
 }  
 
@@ -35,16 +35,16 @@ content-type: application/json
     }
 }  
 ###
-GET http://localhost:3000/users/67342bfd1df36434ff5a5105
+GET http://localhost:3000/users/67395c5bceebb0579d55d0e6
 ###
-PUT http://localhost:3000/users/67342bfd1df36434ff5a5105 HTTP/1.1
+PUT http://localhost:3000/users/67395c5bceebb0579d55d0e6 HTTP/1.1
 content-type: application/json
 
 {   "user":{
     "firstName": "Milton",
     "lastName": "Chino",
     "email": "mch@byui.com",
-    "level": "rt"
+    "level": 2
     }
 }
 ### DELETE user
@@ -54,19 +54,19 @@ PUT http://localhost:3000/docs/673893498e30e910030e4444 HTTP/1.1
 content-type: application/json
 
 {   "doc":{
-    "title": "Title update",
-    "description": "Here is the description update",
+    "title": "Title u",
+    "description": "Here is the description",
     "sentBy": "Luz",
     "updatedBy": "Helaman",
     "source": "/src/img/doc4.pdf",
-    "approval": "rp"
+    "approval": 1
     }
 
 }  
 ###
 GET http://localhost:3000/docs/673893498e30e910030e4444
 ### DELETE doc
-DELETE http://localhost:3000/docs/67131873 HTTP/1.1
+DELETE http://localhost:3000/docs/673893498e30e910030e4444 HTTP/1.1
 
 
 

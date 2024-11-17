@@ -16,12 +16,19 @@ const getOne = async (req, res) => {
   try {
     const result = await User.findById(req.params.id);
     res.setHeader("Content-Type", "application/json");
-    res.status(200).json(result);
-    return await res;
+    // res.status(200).json(result);
+    if (result) {
+      res.status(200).json(result);
+    } else {
+      res
+        .status(500)
+        .json(
+          response.error || "An e rror occurred while deleting the contact."
+        );
+    }
   } catch (error) {
     // console.log(error);
-    res.status(404);
-    return res.send("User not found");
+    res.status(404).json("User not found");
   }
 };
 
@@ -82,10 +89,21 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   try {
-    const result = await User.findById({ _id: req.params.id });
-    // await User.deleteOne();
+    // const result = await User.findById({ _id: req.params.id });
+    const result = await User.deleteOne({ _id: req.params.id });
     console.log(result);
-    res.status(201).json("User deleted");
+    if (result.deletedCount > 0) {
+      // console.log("User deleted");
+      res.status(204).json(result);
+    } else {
+      res
+        .status(500)
+        .json(
+          response.error || "An error occurred while deleting the contact."
+        );
+    }
+
+    // res.status(201).json("User deleted");
     // return await res;
   } catch (error) {
     console.log(error);
