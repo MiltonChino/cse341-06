@@ -80,7 +80,7 @@ const updateUser = async (req, res) => {
     result.user.email = newInfo.user.email;
     result.user.level = newInfo.user.level;
     await result.save();
-    res.status(201).json(`User ${result._id} updated`);
+    res.status(204).json(`User ${result._id} updated`);
   } catch (error) {
     res.status(500);
     res.send(error.message || "Internal Server Error");
