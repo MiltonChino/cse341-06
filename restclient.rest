@@ -4,23 +4,39 @@ GET http://localhost:3000/
 ###
 GET http://localhost:3000/users/
 ###
-GET http://localhost:3000/users/67342bfd1df36434ff5a5105
+GET http://localhost:3000/users/67617773916aa27240139cf7
 ###
 POST http://localhost:3000/users/ HTTP/1.1
 content-type: application/json
 
 {   "user":{
-    "firstName": "Luz",
+    "firstName": "Helaman",
     "lastName": "Chino",
-    "email": "luzchino@byui.com",
+    "email": "Helamchino@byui.com",
     "level": 1
     }
 }  
+###
+GET http://localhost:3000/users/6761675f916aa27240139ce4 
+###
+PUT http://localhost:3000/users/6761675f916aa27240139ce4  HTTP/1.1
+content-type: application/json
+
+{   "user":{
+    "firstName": "Milton",
+    "lastName": "Chino",
+    "email": "mch@byui.com",
+    "level": 2
+    }
+}
+### DELETE user
+DELETE http://localhost:3000/users/67617773916aa27240139cf7 HTTP/1.1
+
 
 ###
 GET http://localhost:3000/docs/
 ###
-GET http://localhost:3000/docs/673893498e30e910030e4444 
+GET http://localhost:3000/docs/6761666e916aa27240139cdf 
 ###
 POST http://localhost:3000/docs/ HTTP/1.1
 content-type: application/json
@@ -34,23 +50,9 @@ content-type: application/json
     "approval": 0
     }
 }  
-###
-GET http://localhost:3000/users/673971385fefd269d09642c4 
-###
-PUT http://localhost:3000/users/673971385fefd269d09642c4  HTTP/1.1
-content-type: application/json
 
-{   "user":{
-    "firstName": "Milton",
-    "lastName": "Chino",
-    "email": "mch@byui.com",
-    "level": 2
-    }
-}
-### DELETE user
-DELETE http://localhost:3000/users/673971385fefd269d09642c4 HTTP/1.1
 ###
-PUT http://localhost:3000/docs/673893498e30e910030e4444 HTTP/1.1
+PUT http://localhost:3000/docs/6761666e916aa27240139cdf HTTP/1.1
 content-type: application/json
 
 {   "doc":{
@@ -64,19 +66,19 @@ content-type: application/json
 
 }  
 ###
-GET http://localhost:3000/docs/673893498e30e910030e4444
+GET http://localhost:3000/docs/6761666e916aa27240139cdf
 ### DELETE doc
-DELETE http://localhost:3000/docs/673893498e30e910030e4444 HTTP/1.1
+DELETE http://localhost:3000/docs/676176ea916aa27240139cf2 HTTP/1.1
 
 
 
 // Production
 
 ###
-https://cse341-05.onrender.com/
+https://cse341-06.onrender.com/
 
 ###
-https://cse341-05.onrender.com/users/
+https://cse341-06.onrender.com/users/
 
 ###
 https://cse341-05.onrender.com/users/6717120629810ddfa37595f2

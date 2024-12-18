@@ -57,6 +57,7 @@ const insertUser = async (req, res) => {
         );
     }
   } catch (error) {
+    console.log(error);
     res.status(500);
     res.send(error.message || "Internal Server Error");
   }
