@@ -75,26 +75,63 @@ DELETE http://localhost:3000/docs/676176ea916aa27240139cf2 HTTP/1.1
 // Production
 
 ###
-https://cse341-06.onrender.com/
+https://cse341-06-g0nu.onrender.com
 
 ###
-https://cse341-06.onrender.com/users/
+https://cse341-06-g0nu.onrender.com/users/
 
 ###
-https://cse341-05.onrender.com/users/6717120629810ddfa37595f2
+GET https://cse341-06-g0nu.onrender.com/users/6717120629810ddfa37595f2
 
 ###
-POST https://cse341-05.onrender.com/users/ HTTP/1.1
+POST https://cse341-06-g0nu.onrender.com/users/ HTTP/1.1
+content-type: application/json
+
+{   "user":{
+    "firstName": "Milton",
+    "lastName": "Chino",
+    "email": "milchino@byui.com",
+    "level": 2
+    }
+}
+
+###
+GET https://cse341-06-g0nu.onrender.com/users/6717120629810ddfa37595f2
+
+###
+PUT https://cse341-06-g0nu.onrender.com/users/ HTTP/1.1
 content-type: application/json
 
 {   "user":{
     "firstName": "Helaman",
     "lastName": "Chino",
     "email": "helamchino@byui.com",
-    "level": "admin1"
+    "level": 1
     }
 }
 
 ### DELETE contact
-DELETE https://cse341-04.onrender.com/contacts/6717120629810ddfa37595f2 HTTP/1.1
+DELETE https://cse341-06-g0nu.onrender.com/contacts/6717120629810ddfa37595f2 HTTP/1.1
 
+###
+GET https://cse341-06-g0nu.onrender.com/docs
+
+###
+POST https://cse341-06-g0nu.onrender.com/docs/ HTTP/1.1
+content-type: application/json
+
+{   "doc":{
+    "title": "Title",
+    "description": "description",
+    "sentBy": "Milton",
+    "updatedBy": "Helaman",
+    "source": "/src/img/doc4.pdf",
+    "approval": 1
+    }
+}
+
+###
+GET https://cse341-06-g0nu.onrender.com/docs/
+
+###
+DELETE https://cse341-06-g0nu.onrender.com/docs/
